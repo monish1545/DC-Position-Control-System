@@ -55,8 +55,37 @@ The equation (1) can be written as <br>
 5.	Analyse the output in open loop and closed loop.
 
 ## Program
+num = [1];
+den = [1 10 20];
+sys = tf(num,den);
+subplot(2,2,1)
+step (sys);
+title ('Open loop system');
+kp=300;
+C1=pid(kp);
+G1=feedback(C1*sys,1);
+subplot(2,2,2);
+step(G1);
+title ('P controller');
+kp=30;
+ki=70;
+C2=pid(kp,ki);
+G2=feedback(C2*sys,1);
+subplot(2,2,3);
+step(G2);
+title('PI controller');
+Kp=350;
+Ki=300;
+Kd=50;
+C3=pid(Kp,Ki,Kd);
+G3=feedback(C3*sys,1);
+subplot(2,2,4);
+step(G3);
+title('PID controller');
 
 ## Output
+<img width="695" height="522" alt="image" src="https://github.com/user-attachments/assets/9efcce14-5fab-4d73-b752-ce41b9c6968e" />
+
 
 ## Result
 Thus, the position of dc motor is controlled using MATLAB. 
